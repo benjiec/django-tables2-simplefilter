@@ -3,6 +3,12 @@ django-tables2-simplefilter
 
 Simple filtering support for django-tables2. Works only with queryset based tables.
 
+Install:
+
+```
+  pip install -e git://github.com/benjiec/django-tables2-simplefilter.git#egg=django_tables2_simplefilter
+```
+
 Usage:
 
 1. Define a list of filters in Table subclass. List of filters should be list
@@ -33,6 +39,12 @@ passing in the filters variable. For example,
 CSS classes are: filter-form, filter-item, filter-name, filter-selection,
 filter-actions, filter-submit, filter-reset
 
+Add default CSS to your base template:
+
+```
+  <link rel="stylesheet" href="{{STATIC_URL}}django_tables2_simplefilter/filter.css" />
+```
+
 
 3. Use FilteredSingleTableView in urls.py. For example,
 
@@ -49,4 +61,7 @@ filter-actions, filter-submit, filter-reset
         name='my-list-view'),
 
 ```
+
+4. Include 'django_tables2_simplefilter' in your INSTALLED_APPS list.
+
 

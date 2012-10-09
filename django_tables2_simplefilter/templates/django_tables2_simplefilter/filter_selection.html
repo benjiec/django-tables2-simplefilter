@@ -4,6 +4,7 @@
   <form action="?" method="GET">
     {% for p in filters.base_params %}
       <input type="hidden" name="{{ p.0 }}" value="{{ p.1 }}" />
+    {% endfor %}
     {% for f in filters.filters %}
       <div class="filter-item">
         <span class="filter-name">{{ f.verbose_name }}:</span>
