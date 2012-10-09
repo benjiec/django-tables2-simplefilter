@@ -1,0 +1,24 @@
+
+<div class="filter-form">
+  <h4>Filter</h4>
+  <form action="?" method="GET">
+    {% for p in filters.base_params %}
+      <input type="hidden" name="{{ p.0 }}" value="{{ p.1 }}" />
+    {% for f in filters.filters %}
+      <div class="filter-item">
+        <span class="filter-name">{{ f.verbose_name }}:</span>
+        <select class="fliter-selection" name="{{ f.field }}">
+          <option value="">All</option>
+          {% for obj in f.values_list %}
+            <option value="{{ obj.1 }}" {% if f.selected == obj.1 %}selected{% endif %}>{{ obj.0 }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endfor %}
+    <div class="filter-actions">
+      <span class="filter-submit"><input type="submit" value="Filter"/></span>
+      <span class="filter-reset"><a href="?">Reset</a></span>
+    </div>
+  </form>
+</div>
+
