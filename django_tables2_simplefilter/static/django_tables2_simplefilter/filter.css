@@ -3,6 +3,6 @@
 .filter-item:first-child { margin-top:15px; }
 .filter-item .filter-name { text-align:right; }
 .filter-left-column { display:inline-block; float:left; width:150px; margin-top:2px; }
-.filter-right-column { display:inline-block; }
+.filter-right-column { display:inline-block; margin-left:5px; }
 .filter-actions { margin-top:15px; }
 .filter-reset { font-size:0.8em; }
