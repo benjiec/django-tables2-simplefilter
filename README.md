@@ -19,14 +19,22 @@ value. For example,
 ```
     import django_tables2 as tables
     class MyTable(tables.Table):
+      class Meta:
+        model = SomeModel
       ...
-      filters = (F('field1','Filter name',values_list=(('True','1'),('False','0'))),
-                 F('field2','Another filter',values_list=[ (str(x), x.name) for x in SomeModel.objects.all()]))
+      filters = (F('field','Filter name',values_list=(('True','1'),('False','0'))),
+                 F('fk__field','Another filter',values_list=[ (str(x), x.name) for x in FKModel.objects.all()]))
 ```
 
 First argument to F should be a field name, which can either be a field in the
 model, or a related field using the standard Django double-underscore syntax.
-E.g. "fktable__field".
+E.g. "fk__field".
+
+From the above example, if user selects the "True" option from the first
+filter, then FilteredSingleTableView will construct a queryset like
+"SomeModel.objects.filter(field=1)". If user selects some value from the second
+filter, then FilteredSingleTableView will construct a queryset like
+"SomeModel.objects.filter(fk__field=value)".
 
 
 2. In your template, include django_tables2_simplefilter/filter_selection.html,
